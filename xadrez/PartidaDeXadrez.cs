@@ -196,9 +196,11 @@ namespace xadrez
                     {
                         if (mat[i, j] == true)
                         {
-                            Peca pecaCpturada = ExecutaMovimento(peca.posicao, new Posicao(i, j));
+                            Posicao origem = peca.posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCpturada = ExecutaMovimento(origem, destino);
                             bool testeXeque = EstaEmXeque(cor);
-                            DesfazMovimento(peca.posicao, new Posicao(i, j), pecaCpturada);
+                            DesfazMovimento(origem, destino, pecaCpturada);
                             if (!testeXeque)
                             {
                                 return false;
