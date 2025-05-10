@@ -23,8 +23,9 @@ namespace xadrez
             bool[,] mat = new bool[tab.linhas, tab.colunas];
             Posicao pos = new Posicao(0, 0);
 
+            // verificando noroeste
             pos.DefinirValores(posicao.linha - 1, posicao.coluna - 1);
-            while (tab.PosicaoValida(pos) && tab.peca(pos).cor != cor)
+            while (tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
                 if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
@@ -34,6 +35,7 @@ namespace xadrez
                 pos.DefinirValores(pos.linha - 1, pos.coluna - 1);
             }
 
+            // verificando nordeste
             pos.DefinirValores(posicao.linha - 1, posicao.coluna + 1);
             while (tab.PosicaoValida(pos) && PodeMover(pos))
             {
@@ -45,6 +47,7 @@ namespace xadrez
                 pos.DefinirValores(pos.linha - 1, pos.coluna + 1);
             }
 
+            // verificando sudeste
             pos.DefinirValores(posicao.linha + 1, posicao.coluna + 1);
             while (tab.PosicaoValida(pos) && PodeMover(pos))
             {
@@ -56,6 +59,7 @@ namespace xadrez
                 pos.DefinirValores(pos.linha + 1, pos.coluna + 1);
             }
 
+            // verificando sudoeste
             pos.DefinirValores(posicao.linha + 1, posicao.coluna - 1);
             while (tab.PosicaoValida(pos) && PodeMover(pos))
             {
